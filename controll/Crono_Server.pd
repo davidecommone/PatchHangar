@@ -1,0 +1,69 @@
+#N canvas 175 165 755 460 12;
+#N canvas -8 -8 1366 685 crono_server 0;
+#X obj 551 281 cnv 15 700 400 empty empty Crono_Server 20 12 1 20 -54094
+-228856 0;
+#X obj 638 552 bng 35 250 50 0 empty bang1 empty 17 7 0 10 -195568
+-1 -1;
+#X obj 1073 441 nbx 3 70 -1e+037 1e+037 0 0 empty empty empty 0 -8
+1 50 -162280 -1 -1 0 256;
+#X obj 802 341 nbx 2 170 -1e+037 1e+037 0 0 empty empty empty 0 -8
+1 145 -162280 -1 -1 0 256;
+#X obj 581 341 nbx 2 170 -1e+037 1e+037 0 0 empty empty empty 0 -8
+1 145 -162280 -1 -1 0 256;
+#X obj 783 552 bng 35 250 50 0 empty bang2 empty 17 7 0 10 -195568
+-241291 -241291;
+#X obj 929 552 bng 35 250 50 0 empty bang3 empty 17 7 0 10 -195568
+-241291 -241291;
+#X obj 1073 552 bng 35 250 50 0 empty bang4 empty 17 7 0 10 -195568
+-241291 -241291;
+#X msg 34 137 \; bang1 color 50 \; bang1 size 35 \; bang2 color 50
+\; bang2 size 35 \; bang3 color 50 \; bang3 size 35 \; bang4 color
+50 \; bang4 size 35 \;;
+#X obj 34 101 loadbang;
+#X msg 37 324 \; bang1 color 103 \; bang1 size 75 \;;
+#X msg 37 374 \; bang2 color 103 \; bang2 size 75 \;;
+#X msg 176 324 \; bang3 color 103 \; bang3 size 75 \;;
+#X msg 176 375 \; bang4 color 103 \; bang4 size 75 \;;
+#X msg 38 466 \; bang1 color 16 \; bang1 size 90 \; bang2 color 16
+\; bang2 size 90 \; bang3 color 16 \; bang3 size 90 \; bang4 color
+16 \; bang4 size 90 \;;
+#X text 88 301 Countdown;
+#X text 89 118 Standart;
+#X obj 663 109 t b s;
+#X obj 663 133 list store;
+#X obj 663 183 s, f 5;
+#X obj 663 59 oscparse;
+#X obj 663 86 list split 1, f 20;
+#X obj 663 33 netreceive -u -b 10000;
+#X obj 663 158 list trim;
+#X obj 810 246 unpack 0 0 0;
+#X obj 810 224 r crono;
+#X text 849 488 min.;
+#X text 1071 488 sec.;
+#X text 1202 490 ms;
+#X obj 248 152 r semaforo;
+#X obj 248 179 route bang1 bang2 bang3 bang4 tac standart;
+#X text 88 444 Tac;
+#X text 663 11 Network(server);
+#X connect 9 0 8 0;
+#X connect 17 0 18 0;
+#X connect 17 1 19 1;
+#X connect 18 0 23 0;
+#X connect 20 0 21 0;
+#X connect 21 0 17 0;
+#X connect 21 1 18 1;
+#X connect 22 0 20 0;
+#X connect 23 0 19 0;
+#X connect 24 0 4 0;
+#X connect 24 1 3 0;
+#X connect 24 2 2 0;
+#X connect 25 0 24 0;
+#X connect 29 0 30 0;
+#X connect 30 0 10 0;
+#X connect 30 1 11 0;
+#X connect 30 2 12 0;
+#X connect 30 3 13 0;
+#X connect 30 4 14 0;
+#X connect 30 5 8 0;
+#X coords 0 -1 1 1 702 402 2 550 280;
+#X restore 39 33 pd crono_server;

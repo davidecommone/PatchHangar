@@ -1,0 +1,43 @@
+Indicazioni per la sintassi:
+
+- Con le funzioni seq1() e seq2() si invia a un  determinato oscillatore di una determinata camera una sequenza,
+ovvero una successione di frequenze secondo le modalità  scritte nelle funzioni sequenza1() e sequenza2(),
+questo annidamento è necessario per utilizzare il multithreading, con cui possiamo  far eseguire contemporaneamente la sequenza 
+su più oscillatori.
+
+- Con la funzione amseq() si invia a controllo "amount" di un determinato modulatore di ampiezza di una
+determinata camera una sequenza di valori per cui è stato fatto un annidamento analogo a seq1() e seq2().
+
+-Con la funzione lseq() inviamo un messaggio dal contenuto simile a quello di amseq() ma questa funzione Ã¨
+riservata alla Camera3 in cui ci sono controlli diversi, non essendoci i modulatori di frequenza.
+
+-Per utilizzare qualsiasi altro controllo che non necessita l'invio di una sequenza di valori (come quelli
+descritti sopra) basta richiamare l' istanza - giÃ  creata - della classe corrispondente alla camera in cui si vuole mandare
+il messaggio e la funzione relativa al controllo a cui si vuole mandare un valore.
+
+-La funzione gliss() viene utilizzata per eseguire un glissando di un intervallo di due frequenze, nel codice Python si vede
+soltanto l'invio delle due variabili e un time.sleep, questo perchè il glissando viene eseguito da una rampa (line~) su PureData,
+per questo utilizzo è stato scelto di usare ciò solo nella Camera3; anche questa funzione è annidata per il multithreading.
+
+-Dettagli:
+
+seq1(camerax,tipo,ottava=None,address=None):
+camerax:nome della camera(camera1,camera2,camera3)
+tipo:funzione svolta dall' osccillatore a cui si vuole inviare la sequenza(ovvero"Carrier"o"Mod"o"Add") 
+ottava: 0.25 = 15mb; 0.5 = 8vb; 1 = --(None); 2 = 8va; 4 = 15ma
+address:(opzionale) da utilizzare solo in caso si voglia inviare una sequenza a un modulatore nelle camera1 o 2 ("mod1","mod2","mod3")
+
+stessa sintassi per la funzione seq2()
+
+amseq(camerax,address,coefficente=None):inivia una sequenza a una modulatore d'ampiezza
+camerax: nome della camera(camera1,camera2)   
+address: selezionare il modulatore a cui si vuole inviare la sequenza
+coefficente: 0.25=/4 0.5=/2 ecc...(None = 1)
+
+lseq(camerax,address,coefficente=None):
+stessa cosa di amseq() ma da utilizzare solo per la Camera3, quindi
+camera3 sarÃ  l'unico argomento tollerato nell'argomento camerax.
+
+gliss(camerax,address,f1,f2):
+inserire l'argomento camera3, l'indirizzo deve essere seguito da _gl, perchè su PureData vi è un receive dedicato (ma solo nella Camera3),
+infine, f1 è la frequenza di partenza e f2 la frequenza di arrivo.

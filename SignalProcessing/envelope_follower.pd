@@ -1,0 +1,32 @@
+#N canvas 450 187 618 300 10;
+#X obj 29 24 inlet~;
+#X obj 22 64 *~;
+#X obj 22 142 env~;
+#X obj 22 165 dbtorms;
+#X obj 22 108 lop~;
+#X obj 132 198 outlet;
+#X obj 195 92 nbx 3 46 -1e+37 1e+37 0 0 empty empty dB 0 -8 0 15 #fcfcfc
+#000000 #000000 0 256 0;
+#X obj 315 93 nbx 3 45 -1e+37 1e+37 0 0 empty empty RMS 0 -8 0 15 #fcfcfc
+#000000 #000000 0 256 0;
+#X obj 195 161 hsl 184 8 0 4 0 0 empty empty lop_frequency -2 -8 0
+10 #fcfcfc #000000 #000000 4575 1;
+#X obj 389 158 nbx 4 11 -1e+37 1e+37 0 0 empty empty Hz 0 -8 0 10 #fcfcfc
+#000000 #000000 1 256 0;
+#X obj 124 30 loadbang;
+#X msg 124 55 1;
+#X obj 21 202 outlet;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 2 0 6 0;
+#X connect 2 0 12 0;
+#X connect 3 0 5 0;
+#X connect 3 0 7 0;
+#X connect 4 0 2 0;
+#X connect 8 0 9 0;
+#X connect 8 0 4 1;
+#X connect 10 0 11 0;
+#X connect 11 0 8 0;
+#X coords 0 -1 1 1 251 113 1 186 66;

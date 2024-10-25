@@ -1,0 +1,33 @@
+#N canvas -8 -8 1366 695 12;
+#N canvas -8 -8 1366 695 MetroCrono_Server 0;
+#X obj 442 321 nbx 2 400 -1e+037 1e+037 0 0 empty empty empty 0 -8
+1 500 -262144 -1 -1 -10 256;
+#X obj 66 321 nbx 1 400 -1e+037 1e+037 0 0 empty empty empty 0 -8 1
+500 -262144 -1 -1 0 256;
+#X obj 90 139 t b s;
+#X obj 90 163 list store;
+#X obj 90 213 s, f 5;
+#X obj 90 89 oscparse;
+#X obj 90 116 list split 1, f 20;
+#X obj 90 63 netreceive -u -b 10000;
+#X obj 90 188 list trim;
+#X obj 340 133 r metrocrono;
+#X text 609 701 min.;
+#X text 1360 702 sec.;
+#X obj 474 1385 nbx 3 130 -1e+037 1e+037 0 0 empty empty empty 0 -8
+1 150 -262144 -258113 -1 0 256;
+#X text 472 1514 Countdown;
+#X obj 340 155 unpack f f;
+#X connect 2 0 3 0;
+#X connect 2 1 4 1;
+#X connect 3 0 8 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 6 1 3 1;
+#X connect 7 0 5 0;
+#X connect 8 0 4 0;
+#X connect 9 0 14 0;
+#X connect 14 0 1 0;
+#X connect 14 1 0 0;
+#X coords 0 -1 1 1 1500 520 1 60 300;
+#X restore -18 2 pd MetroCrono_Server;
