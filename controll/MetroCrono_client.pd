@@ -1,29 +1,21 @@
 #N canvas 177 417 1118 273 12;
-#N canvas -8 -8 1366 695 MetroCrono_Client 0;
+#N canvas -8 -8 1366 695 MetroCrono_Client 1;
 #X obj 209 90 metro 1000;
 #X obj 200 159 mod 60;
 #X obj 263 147 + 1;
-#X obj 413 427 nbx 3 200 -1e+037 1e+037 0 0 empty empty empty 0 -8
-1 200 -262144 -1 -1 47 256;
-#X obj 209 67 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 501 427 nbx 1 200 -1e+37 1e+37 0 0 empty empty empty 0 -8 1 200 #fcfcfc #000000 #000000 0 256;
+#X obj 209 67 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 137 190 / 60;
 #X obj 137 214 int;
-#X obj 109 427 nbx 2 200 -1e+037 1e+037 0 0 empty empty empty 0 -8
-1 200 -262144 -1 -1 9 256;
-#X obj 983 462 bng 15 250 50 0 metrocrono_start empty start 17 7 0
-10 -262144 -1 -1;
-#X obj 983 486 bng 15 250 50 0 metrocrono_stop empty stop 17 7 0 10
--262144 -1 -1;
-#X obj 983 509 bng 15 250 50 0 metrocrono_reset empty reset 17 7 0
-10 -262144 -1 -1;
+#X obj 109 427 nbx 2 200 -1e+37 1e+37 0 0 empty empty empty 0 -8 1 200 #fcfcfc #000000 #000000 0 256;
+#X obj 983 462 bng 15 250 50 0 metrocrono_start empty start 17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 983 486 bng 15 250 50 0 metrocrono_stop empty stop 17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 983 509 bng 15 250 50 0 metrocrono_reset empty reset 17 7 0 10 #fcfcfc #000000 #000000;
 #X msg 345 113 0;
 #X msg 345 88 1;
 #X msg 345 138 0;
-#X obj 1041 462 bng 15 250 50 0 metrocrono_connect empty connect 17
-7 0 10 -262144 -1 -1;
-#X obj 1041 486 bng 15 250 50 0 metrocrono_disconnect empty disconnect
-17 7 0 10 -262144 -1 -1;
+#X obj 1041 462 bng 15 250 50 0 metrocrono_connect empty connect 17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 1041 486 bng 15 250 50 0 metrocrono_disconnect empty disconnect 17 7 0 10 #fcfcfc #000000 #000000;
 #N canvas 799 70 450 300 Network_client 0;
 #X obj 34 28 inlet;
 #X obj 87 28 inlet;
@@ -64,8 +56,7 @@
 #X obj 209 116 f;
 #X obj 597 162 metro 1000;
 #X obj 648 211 + 1;
-#X obj 597 139 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 597 139 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 635 265 0;
 #X msg 685 159 -10;
 #X obj 597 198 f;
@@ -88,8 +79,12 @@
 #X obj 979 246 sel -10 -9 -8 -7 -6 -5 -4 -3 -2 -1 0;
 #X obj 635 239 sel 0;
 #X obj 1041 359 loadbang;
+#X obj 48 -69 inlet;
+#X obj 92 -69 inlet;
 #X connect 0 0 24 0;
 #X connect 1 0 31 0;
+#X connect 1 0 16 1;
+#X connect 1 0 3 0;
 #X connect 2 0 24 1;
 #X connect 4 0 0 0;
 #X connect 4 0 31 1;
@@ -121,8 +116,6 @@
 #X connect 30 0 3 0;
 #X connect 30 0 48 0;
 #X connect 30 0 16 1;
-#X connect 31 0 3 0;
-#X connect 31 0 16 1;
 #X connect 32 0 3 0;
 #X connect 32 0 16 1;
 #X connect 33 0 29 0;
@@ -142,6 +135,12 @@
 #X connect 47 10 36 0;
 #X connect 48 0 28 0;
 #X connect 49 0 14 0;
+#X connect 50 0 5 0;
+#X connect 51 0 1 0;
 #X coords 0 -1 1 1 1050 250 1 100 400;
 #X restore 9 11 pd MetroCrono_Client;
+#X obj 8 -36 inlet;
+#X obj 52 -36 inlet;
+#X connect 1 0 0 0;
+#X connect 2 0 0 1;
 #X coords 0 273 1 272 1000 250 0;
