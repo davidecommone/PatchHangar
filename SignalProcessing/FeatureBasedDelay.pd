@@ -172,7 +172,6 @@
 #X obj 134 594 clip 5 20000;
 #X obj 390 108 delwrite~ \$0-delay_thread1 21000;
 #X obj 809 108 delwrite~ \$0-delay_thread2 21000;
-#X obj 971 383 s outControl;
 #X connect 0 0 3 0;
 #X connect 1 0 0 0;
 #X connect 2 0 170 0;
@@ -251,7 +250,6 @@
 #X connect 70 0 71 0;
 #X connect 71 0 0 0;
 #X connect 78 0 92 0;
-#X connect 78 0 173 0;
 #X connect 79 0 78 0;
 #X connect 92 0 106 0;
 #X connect 92 1 107 0;
